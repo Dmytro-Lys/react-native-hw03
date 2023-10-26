@@ -1,0 +1,20 @@
+{
+    "userName":
+        {
+            "placeholder": "Логін",
+            "pattern": "/^[a-zA-Z]+(([-_ ][a-zA-Z])?[a-zA-Z]*)*$/",
+            "type": "username",
+            "minlength": "3"
+        },
+    "email":{
+        "placeholder": "Адреса електронної пошти",
+        "pattern": "/^([0-9A-Za-z]{1}([-_\\.]?[0-9A-Za-z]+)*)@(([0-9A-Za-z]{1}([-_]?[0-9A-Za-z]+)*\\.){1,2}[A-Za-z]{2,})$/",
+        "type": "email"
+    },
+    "password":{
+         "placeholder": "Пароль",
+        "pattern": "/(?=.*[0-9])(?=.*[!@#$%^&*()\\-\\_=+,<.>/?;:'\\[\\]{}|])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-\\_=+,<.>/?;:'\\[\\]{}|]+/",
+        "type": "password",
+        "minlength": "8"
+    }
+}
