@@ -2,6 +2,13 @@ import { StyleSheet } from "react-native";
 import TextButton from "./TextButton";
 import PropTypes from "prop-types"
 
+const LinkButton = ({ text, onPress }) => {
+    return (
+          <TextButton text={text} onPress={onPress} styleButton={styles.buttonLink} styleText={styles.buttonLinkTitle}/>
+    )
+}
+
+
 const styles = StyleSheet.create({
     buttonLink: {
         marginLeft: 'auto',
@@ -16,11 +23,6 @@ const styles = StyleSheet.create({
     }
 })   
 
-const LinkButton = ({ text, onPress }) => {
-    return (
-          <TextButton text={text} onPress={onPress} styleButton={styles.buttonLink} styleText={styles.buttonLinkTitle}/>
-    )
-}
 
 export default LinkButton;
 

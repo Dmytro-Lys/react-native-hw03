@@ -2,13 +2,6 @@ import { StyleSheet, Pressable } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import PropTypes from "prop-types";
 
-const styles = StyleSheet.create({
-  buttonBase: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }
-})
 const SvgButton = ({ styleButton = {}, onPress, svgWidth, svgHeight, svgFile, fill = 'none', rotation = 0 }) => {
     return (
           <Pressable
@@ -18,6 +11,15 @@ const SvgButton = ({ styleButton = {}, onPress, svgWidth, svgHeight, svgFile, fi
           </Pressable>    
     )
 }
+
+
+const styles = StyleSheet.create({
+  buttonBase: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }
+})
 
 export default SvgButton
 

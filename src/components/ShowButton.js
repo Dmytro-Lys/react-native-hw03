@@ -1,6 +1,14 @@
 import { StyleSheet } from "react-native";
 import TextButton from "./TextButton";
 import PropTypes from "prop-types";
+ 
+
+const ShowButton = ({ titleShow, onPressShow }) => {
+    return (
+         <TextButton text={titleShow} onPress={onPressShow} styleButton={styles.buttonShow} styleText={styles.buttonShowTitle}/>
+     )
+}
+
 
 const styles = StyleSheet.create({
     buttonShow: {
@@ -13,13 +21,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#1B4371',
     }
-})   
-
-const ShowButton = ({ titleShow, onPressShow }) => {
-    return (
-         <TextButton text={titleShow} onPress={onPressShow} styleButton={styles.buttonShow} styleText={styles.buttonShowTitle}/>
-     )
-}
+})  
 
 export default ShowButton;
 

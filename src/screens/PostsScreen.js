@@ -1,7 +1,34 @@
 import {  ScrollView, StyleSheet, View, Text } from "react-native";
 import { Header, Avatar, Footer, SvgButton } from "../components";
-import defaultAvatar from '../../assets/images/avatar.jpg'
-import LogOutSvg from "../../assets/images/log-out.svg";
+import defaultAvatar from '../assets/images/avatar.jpg'
+import LogOutSvg from "../assets/images/log-out.svg";
+
+
+const PostsScreen = () => {
+    const logOut = () => alert("LogOut")
+    
+    
+    return (
+        <View style={styles.container}>
+            <Header title="Публікації">
+                <SvgButton styleButton={styles.buttonSvg} onPress={logOut} svgWidth='24' svgHeight='24' svgFile={LogOutSvg} />
+            </Header>
+            <ScrollView style={styles.postsContainer}>
+                <View style={styles.userContainer}>
+                    <Avatar avatarImage={defaultAvatar}  />
+                    <View style={styles.userTextContainer}>
+                        <Text style={styles.userText}>Natali Romanova</Text>
+                        <Text style={styles.emailText}>test@mail.com</Text>
+                    </View>
+                </View>    
+            </ScrollView>
+
+            <Footer /> 
+
+       </View>     
+  )
+}
+
 
 const styles = StyleSheet.create({
     container: {
@@ -43,28 +70,4 @@ const styles = StyleSheet.create({
     }
 })
 
-const PostsScreen = () => {
-    const logOut = () => alert("LogOut")
-    
-    
-    return (
-        <View style={styles.container}>
-            <Header title="Публікації">
-                <SvgButton styleButton={styles.buttonSvg} onPress={logOut} svgWidth='24' svgHeight='24' svgFile={LogOutSvg} />
-            </Header>
-            <ScrollView style={styles.postsContainer}>
-                <View style={styles.userContainer}>
-                    <Avatar avatarImage={defaultAvatar}  />
-                    <View style={styles.userTextContainer}>
-                        <Text style={styles.userText}>Natali Romanova</Text>
-                        <Text style={styles.emailText}>test@mail.com</Text>
-                    </View>
-                </View>    
-            </ScrollView>
-
-            <Footer /> 
-
-       </View>     
-  )
-}
 export default PostsScreen;

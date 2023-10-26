@@ -1,6 +1,18 @@
 import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
 
+
+
+const Header = ({ title, children }) => {
+    
+    return (
+        <View style={styles.containerHeader}>
+            <Text style={styles.textHeader}>{title}</Text>
+           {children}
+       </View>
+   )
+}
+
 const styles = StyleSheet.create({
     containerHeader: {
         flex: 1,
@@ -29,16 +41,6 @@ const styles = StyleSheet.create({
         right: 10,
     }
 })
-
-const Header = ({ title, children }) => {
-    
-    return (
-        <View style={styles.containerHeader}>
-            <Text style={styles.textHeader}>{title}</Text>
-           {children}
-       </View>
-   )
-}
 
 export default Header;
 

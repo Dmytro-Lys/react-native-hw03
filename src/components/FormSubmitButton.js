@@ -2,6 +2,14 @@ import { StyleSheet } from "react-native";
 import TextButton from "./TextButton";
 import PropTypes from "prop-types"
 
+
+const FormSubmitButton = ({text, onPress}) => {
+    return (
+        <TextButton text={text} onPress={onPress} styleButton={styles.buttonSubmit} styleText={styles.buttonSubmitText} />
+     )
+}
+
+
 const styles = StyleSheet.create({
     buttonSubmit: {
         borderRadius: 100,
@@ -20,12 +28,6 @@ const styles = StyleSheet.create({
     }
 
 })   
-
-const FormSubmitButton = ({text, onPress}) => {
-    return (
-        <TextButton text={text} onPress={onPress} styleButton={styles.buttonSubmit} styleText={styles.buttonSubmitText} />
-     )
-}
 
 export default FormSubmitButton;
 

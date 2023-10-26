@@ -5,9 +5,9 @@ import {RegistrationScreen, LoginScreen, PostsScreen} from './src/screens'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
-    'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
-    'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
+    'Roboto-Regular': require('./src/assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Medium': require('./src/assets/fonts/Roboto-Medium.ttf'),
+    'Roboto-Bold': require('./src/assets/fonts/Roboto-Bold.ttf'),
   });
   
   if (!fontsLoaded) {
@@ -16,8 +16,8 @@ export default function App() {
   
   return (
     <View style={styles.container}>
-      <RegistrationScreen/>
-      {/* <LoginScreen /> */}
+      {/* <RegistrationScreen/> */}
+      <LoginScreen />
       {/* <PostsScreen/> */}
       <StatusBar style="auto" />
     </View>

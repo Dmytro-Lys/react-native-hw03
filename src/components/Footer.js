@@ -1,8 +1,28 @@
 import {  StyleSheet, View } from "react-native";
 import SvgPlusButton from "./SvgPlusButton";
 import SvgButton from "./SvgButton";
-import GridSvg from "../../assets/images/grid.svg";
-import UserSvg from "../../assets/images/user.svg";
+import GridSvg from "../assets/images/grid.svg";
+import UserSvg from "../assets/images/user.svg";
+
+
+
+
+const Footer = () => {
+    const addPost = () => alert("Add Post")
+
+    const showEverythin = () => alert("Show everythin")
+
+    const showUser = () => alert("Show user")
+
+   
+    return(
+        <View style={styles.containerFooter}>
+            <SvgButton styleButton={styles.buttonSvg} onPress={showEverythin} svgWidth='24' svgHeight='24' svgFile={GridSvg}/>
+            <SvgPlusButton onPress={addPost} styleButton={styles.buttonAdd} stroke='white' />
+            <SvgButton styleButton={styles.buttonSvg} onPress={showUser} svgWidth='24' svgHeight='24' svgFile={UserSvg}/>
+        </View>
+    )
+}
 
 
 const styles = StyleSheet.create({
@@ -33,23 +53,5 @@ const styles = StyleSheet.create({
         
     }
 })
-
-
-const Footer = () => {
-    const addPost = () => alert("Add Post")
-
-    const showEverythin = () => alert("Show everythin")
-
-    const showUser = () => alert("Show user")
-
-   
-    return(
-        <View style={styles.containerFooter}>
-            <SvgButton styleButton={styles.buttonSvg} onPress={showEverythin} svgWidth='24' svgHeight='24' svgFile={GridSvg}/>
-            <SvgPlusButton onPress={addPost} styleButton={styles.buttonAdd} stroke='white' />
-            <SvgButton styleButton={styles.buttonSvg} onPress={showUser} svgWidth='24' svgHeight='24' svgFile={UserSvg}/>
-        </View>
-    )
-}
 
 export default Footer
