@@ -40,25 +40,21 @@ useEffect(() => {
   return (
     <ImageBackground source={bgImage} resizeMode="cover" style={styles.imageBg}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-         <KeyboardAvoidingView  behavior={Platform.OS == "ios" ? "padding" : "height"}>
-         <View style={styles.formWrapper}>
-        <View style={isShownKeyboard ? { ...styles.form,  height: 344} : styles.form}> 
-        
-          <FormTitle text="Увійти" />
-          <View style={styles.formElements}>
-            
-              <Input inputName="email" handleChange={setEmail} inputValue={email} />
-              <Input inputName="password" handleChange={setPassword} inputValue={password} />
-   
+        <KeyboardAvoidingView  behavior={Platform.OS == "ios" ? "padding" : "height"}>
+          <View style={styles.formWrapper}>
+            <View style={isShownKeyboard ? { ...styles.form,  paddingBottom: 0} : styles.form}> 
+              <FormTitle text="Увійти" />
+              <View style={styles.formElements}>
+                <Input inputName="email" handleChange={setEmail} inputValue={email} />
+                <Input inputName="password" handleChange={setPassword} inputValue={password} />
+              </View>
+              <FormSubmitButton text="Увійти" onPress={onSubmit} />
+              <LinkButton text="Немає акаунту? Зареєструватися" onPress={onLink} />
+            </View> 
           </View>
-          <FormSubmitButton text="Увійти" onPress={onSubmit} />
-            <LinkButton text="Немає акаунту? Зареєструватися" onPress={onLink} />
-   
-        </View> 
-          </View>
-         </KeyboardAvoidingView> 
-         </TouchableWithoutFeedback>
-      </ImageBackground>   
+        </KeyboardAvoidingView> 
+      </TouchableWithoutFeedback>
+    </ImageBackground>   
   );
 }
 
@@ -67,27 +63,23 @@ const windowWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
    imageBg: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'flex-end',
-
   },
   formWrapper: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
-     width: windowWidth,
+    width: windowWidth,
   },
   form: {
-    position: 'relative',
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 32,
-    // paddingBottom: 111,
+    paddingBottom: 111,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: '#fff',
-     height: 455,
-    width: windowWidth,
   },
   formElements: {
     flex: 1,
