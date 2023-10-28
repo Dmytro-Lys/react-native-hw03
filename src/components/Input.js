@@ -67,7 +67,7 @@ const Input = ({ inputName, handleChange, inputValue, handleValidation, inputVal
             required />
          
             {type === 'password' && <ShowButton titleShow={secureTextShow ? "Показати" : "Сховати"} onPressShow={toggleSecureTextShow} />} 
-            {!inputValidation[inputName] && <ErrorMessage message={`Incorect ${inputName}`}/>}
+            {!inputValidation[inputName] && <ErrorMessage message={`Incorrect ${inputName}`}/>}
         </View>
       )
 }
@@ -79,5 +79,7 @@ export default Input;
 Input.propTypes = {
    inputName: PropTypes.string.isRequired ,
     handleChange: PropTypes.func.isRequired,
-   inputValue: PropTypes.object.isRequired
+    inputValue: PropTypes.object.isRequired,
+   handleValidation: PropTypes.func.isRequired,
+   inputValidation: PropTypes.object.isRequired
 }

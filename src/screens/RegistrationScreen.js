@@ -71,7 +71,7 @@ useEffect(() => {
 
   const onSubmit = () => {
     validationRequired();
-    if (!checkFormValidation()) return alert('Incorect form filelds values')
+    if (!checkFormValidation()) return alert('Form field values ​​are incorrect')
     console.log(formValues)
     
     reset()

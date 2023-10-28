@@ -5,8 +5,14 @@ import { FormTitle, Input, FormSubmitButton, LinkButton } from '../components';
 
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formValues, setFormValues] = useState({
+    email: '',
+    password: ''
+  })
+  const [formValidation, setFormValidation] = useState({
+    email: true,
+    password: true
+  });
   const [isShownKeyboard, setIsShownKeyboard] = useState(false)
   
 useEffect(() => {
@@ -23,15 +29,66 @@ useEffect(() => {
     };
   }, []);
 
+   const handleFormValueChange = (key, value) => {
+    setFormValues(
+      {
+        ...formValues,
+        [key]: value
+      }
+    );
+  };
 
+  const handleFormValidationChange = (key, value) => {
+    setFormValidation(
+      {
+        ...formValidation,
+        [key]: value
+      }
+    );
+  };
+  
+  const validationRequired = () => {
+    if (Object.values(formValues).some( value => !value)){
+      Object.entries(formValues).forEach(([key, value]) => {
+        if (!value) {
+          formValidation[key] = false
+        }
+      }
+    );
+      setFormValidation({
+        ...formValidation,
+        ...formValidation
+      })   
+    }
+  }
+  
+  const checkFormValidation = () => Object.values(formValidation).every(value => value)
+  
   const onSubmit = () => {
-    alert("Submit")
+    validationRequired();
+    if (!checkFormValidation()) return alert('Form field values ​​are incorrect')
+    console.log(formValues)
+    
+    reset()
+  }
+  
+  const reset = () => {
+    setFormValues(
+      {
+        ...formValues,
+      email: '',
+    password: ''
+      }
+    );
+    setFormValidation(
+      {
+        ...formValidation,
+    email: true,
+    password: true
+      }
+    );
   }
 
-  const reset = () => {
-    setEmail("")
-    setPassword("")
-  }
 
   const onLink = () => {
     alert("Link")
@@ -45,8 +102,8 @@ useEffect(() => {
             <View style={isShownKeyboard ? { ...styles.form,  paddingBottom: 0} : styles.form}> 
               <FormTitle text="Увійти" />
               <View style={styles.formElements}>
-                <Input inputName="email" handleChange={setEmail} inputValue={email} />
-                <Input inputName="password" handleChange={setPassword} inputValue={password} />
+                <Input inputName="email" handleChange= {handleFormValueChange} inputValue={formValues} handleValidation={handleFormValidationChange} inputValidation={formValidation} />
+                <Input inputName="password" handleChange= {handleFormValueChange} inputValue={formValues} handleValidation={handleFormValidationChange} inputValidation={formValidation} />
               </View>
               <FormSubmitButton text="Увійти" onPress={onSubmit} />
               <LinkButton text="Немає акаунту? Зареєструватися" onPress={onLink} />
