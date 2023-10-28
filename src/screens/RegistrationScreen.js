@@ -6,12 +6,54 @@ import { Avatar, FormTitle, Input, FormSubmitButton, LinkButton, SvgPlusButton} 
 
 const RegistrationScreen = () => {
   
- 
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [avatarImage, setAvatarImage] = useState(null)
   const [isShownKeyboard, setIsShownKeyboard] = useState(false)
+  const [formValues, setFormValues] = useState({
+    userName: '',
+    email: '',
+    password: ''
+  })
+  const [formValidation, setFormValidation] = useState({
+    userName: true,
+    email: true,
+    password: true
+  });
+
+
+  const handleFormValueChange = (key, value) => {
+    setFormValues(
+      {
+        ...formValues,
+        [key]: value
+      }
+    );
+  };
+
+  const handleFormValidationChange = (key, value) => {
+    setFormValidation(
+      {
+        ...formValidation,
+        [key]: value
+      }
+    );
+  };
+  
+  const validationRequired = () => {
+    if (Object.values(formValues).some( value => !value)){
+      Object.entries(formValues).forEach(([key, value]) => {
+        if (!value) {
+          formValidation[key] = false
+        }
+      }
+    );
+      setFormValidation({
+        ...formValidation,
+        ...formValidation
+      })   
+    }
+  }
+  
+  const checkFormValidation = () =>  Object.values(formValidation).every( value => value)
   
 useEffect(() => {
   const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -28,13 +70,30 @@ useEffect(() => {
   }, []);
 
   const onSubmit = () => {
-    alert("Submit")
+    validationRequired();
+    if (!checkFormValidation()) return alert('Incorect form filelds values')
+    console.log(formValues)
+    
+    reset()
   }
   
   const reset = () => {
-    setUserName("")
-    setEmail("")
-    setPassword("")
+    setFormValues(
+      {
+        ...formValues,
+            userName: '',
+    email: '',
+    password: ''
+      }
+    );
+    setFormValidation(
+      {
+        ...formValidation,
+            userName: true,
+    email: true,
+    password: true
+      }
+    );
   }
 
   const onLink = () => {
@@ -58,9 +117,9 @@ useEffect(() => {
                 </View>
                 <FormTitle text="Реєстрація" />
                 <View style={styles.formElements}>
-                  <Input inputName="userName" handleChange= {setUserName} inputValue={userName} />
-                  <Input inputName="email" handleChange= {setEmail} inputValue={email}/>
-                  <Input inputName="password" handleChange={setPassword} inputValue={password} />
+                 <Input inputName="userName" handleChange= {handleFormValueChange} inputValue={formValues} handleValidation={handleFormValidationChange} inputValidation={formValidation} />
+                  <Input inputName="email" handleChange= {handleFormValueChange} inputValue={formValues} handleValidation={handleFormValidationChange} inputValidation={formValidation}/>
+                  <Input inputName="password" handleChange={handleFormValueChange} inputValue={formValues} handleValidation={handleFormValidationChange} inputValidation={formValidation} />
                 </View>
                 <FormSubmitButton text="Зареєструватися" onPress={onSubmit} />  
                 <LinkButton text="Вже є акаунт? Увійти" onPress={onLink} />
