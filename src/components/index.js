@@ -11,3 +11,4 @@ export { default as SvgButton } from "./SvgButton.js";
 export { default as Header } from "./Header.js";
 export { default as Footer } from "./Footer.js";
 export { default as ErrorMessage } from "./ErrorMessage.js";
+export { default as Form } from "./Form.js";
